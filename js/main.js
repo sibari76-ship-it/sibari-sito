@@ -39,49 +39,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // =========================================
-    // Custom cursor
-    // =========================================
-    var cursor = document.querySelector('.cursor');
-
-    if (cursor && window.matchMedia('(pointer: fine)').matches) {
-        var mouseX = 0;
-        var mouseY = 0;
-        var cursorX = 0;
-        var cursorY = 0;
-
-        document.addEventListener('mousemove', function (e) {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            cursor.classList.add('cursor--visible');
-        });
-
-        document.addEventListener('mouseleave', function () {
-            cursor.classList.remove('cursor--visible');
-        });
-
-        function animateCursor() {
-            cursorX += (mouseX - cursorX) * 0.07;
-            cursorY += (mouseY - cursorY) * 0.07;
-            cursor.style.left = cursorX + 'px';
-            cursor.style.top = cursorY + 'px';
-            requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
-
-        document.addEventListener('mouseover', function (e) {
-            if (e.target.closest('a, button, [role="button"], input, textarea, select')) {
-                cursor.classList.add('cursor--hover');
-            }
-        });
-
-        document.addEventListener('mouseout', function (e) {
-            if (e.target.closest('a, button, [role="button"], input, textarea, select')) {
-                cursor.classList.remove('cursor--hover');
-            }
-        });
-    }
-
-    // =========================================
     // Intersection Observer — reveal elements
     // =========================================
     var revealElements = document.querySelectorAll('.reveal');
