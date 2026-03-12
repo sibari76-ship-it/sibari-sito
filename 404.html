@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Pagina non trovata | Sibari Bonato</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;600;800&display=swap" as="style">
+    <link rel="preload" href="css/style.css" as="style">
+    <link rel="preload" href="Logo Sibari Bonato bianco.png" as="image">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;600;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* ========================================
+           404 Page — Scoped Styles
+           ======================================== */
+
+        .error-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: var(--space-lg) var(--space-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* --- 404 Number --- */
+        .error-page__code {
+            font-size: clamp(8rem, 25vw, 16rem);
+            font-weight: var(--fw-extrabold);
+            color: var(--color-accent);
+            line-height: 1;
+            letter-spacing: -0.04em;
+            position: relative;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: errorCodeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
+        }
+
+        @keyframes errorCodeIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* --- Glitch effect --- */
+        .error-page__code::before,
+        .error-page__code::after {
+            content: '404';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+        }
+
+        .error-page__code::before {
+            color: #ff0050;
+            animation: glitchTop 4s linear 1.5s infinite;
+        }
+
+        .error-page__code::after {
+            color: #00f2ff;
+            animation: glitchBottom 4s linear 1.5s infinite;
+        }
+
+        @keyframes glitchTop {
+            0%, 92% { opacity: 0; transform: none; }
+            93% { opacity: 0.8; transform: translate(-3px, -2px); clip-path: inset(0 0 60% 0); }
+            94% { opacity: 0.6; transform: translate(4px, 1px); clip-path: inset(20% 0 40% 0); }
+            95% { opacity: 0.8; transform: translate(-2px, -1px); clip-path: inset(40% 0 20% 0); }
+            95.5% { opacity: 0; transform: none; clip-path: none; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes glitchBottom {
+            0%, 92% { opacity: 0; transform: none; }
+            93% { opacity: 0.6; transform: translate(3px, 2px); clip-path: inset(60% 0 0 0); }
+            94% { opacity: 0.8; transform: translate(-4px, -1px); clip-path: inset(40% 0 20% 0); }
+            95% { opacity: 0.6; transform: translate(2px, 1px); clip-path: inset(0 0 60% 0); }
+            95.5% { opacity: 0; transform: none; clip-path: none; }
+            100% { opacity: 0; }
+        }
+
+        /* --- Staggered text entries --- */
+        .error-page__title {
+            font-size: var(--fs-2xl);
+            font-weight: var(--fw-extrabold);
+            letter-spacing: var(--ls-title);
+            line-height: var(--lh-tight);
+            margin-top: var(--space-sm);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: errorFadeUp 0.9s ease-out 0.6s forwards;
+        }
+
+        .error-page__text {
+            font-size: var(--fs-base);
+            font-weight: var(--fw-light);
+            color: var(--color-text-muted);
+            max-width: 440px;
+            margin-top: var(--space-sm);
+            line-height: var(--lh-base);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: errorFadeUp 0.9s ease-out 0.85s forwards;
+        }
+
+        .error-page__actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            margin-top: var(--space-lg);
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: errorFadeUp 0.9s ease-out 1.1s forwards;
+        }
+
+        @keyframes errorFadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- Scanline background texture --- */
+        .error-page::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(255, 255, 255, 0.008) 2px,
+                rgba(255, 255, 255, 0.008) 4px
+            );
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .error-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 1024px) {
+            .error-page__title {
+                font-size: var(--fs-3xl);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cursor -->
+    <div class="cursor"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header__inner">
+            <a href="index.html" class="header__logo">
+                <img decoding="async" src="Logo Sibari Bonato bianco.png" alt="Sibari Bonato - Consulente Marketing Gorizia" width="120" height="40">
+            </a>
+            <nav class="nav" aria-label="Navigazione principale">
+                <ul class="nav__list">
+                    <li><a href="index.html" class="nav__link">Home</a></li>
+                    <li><a href="servizi.html" class="nav__link">Servizi</a></li>
+                    <li><a href="work.html" class="nav__link">Work</a></li>
+                    <li><a href="chi-sono.html" class="nav__link">Chi sono</a></li>
+                    <li><a href="faq.html" class="nav__link">FAQ</a></li>
+                    <li><a href="contatti.html" class="nav__link nav__link--cta">Contatti</a></li>
+                </ul>
+            </nav>
+            <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false">
+                <span class="nav-toggle__bar"></span>
+                <span class="nav-toggle__bar"></span>
+                <span class="nav-toggle__bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="error-page">
+            <p class="error-page__code">404</p>
+            <h1 class="error-page__title">Pagina non trovata</h1>
+            <p class="error-page__text">La pagina che cerchi non esiste o &egrave; stata spostata.</p>
+            <div class="error-page__actions">
+                <a href="index.html" class="btn btn--primary">Torna alla Home</a>
+                <a href="work.html" class="btn btn--secondary">Vai al Portfolio</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer__inner">
+            <nav class="footer__nav" aria-label="Navigazione footer">
+                <ul class="footer__list">
+                    <li><a href="index.html" class="footer__link">Home</a></li>
+                    <li><a href="servizi.html" class="footer__link">Servizi</a></li>
+                    <li><a href="work.html" class="footer__link">Work</a></li>
+                    <li><a href="chi-sono.html" class="footer__link">Chi sono</a></li>
+                    <li><a href="faq.html" class="footer__link">FAQ</a></li>
+                    <li><a href="contatti.html" class="footer__link">Contatti</a></li>
+                </ul>
+            </nav>
+            <div class="footer__legal">
+                <p>&copy; 2026 Sibari Bonato &mdash; Tutti i diritti riservati</p>
+                <p>Bonato Sibari Vittorio | Via Italico Brass, 40 &mdash; 34170 Gorizia (GO) | P.IVA 01265380319</p>
+                <p><a href="privacy.html">Privacy Policy</a> | <a href="privacy.html">Cookie Policy</a></p>
+                <p><a href="mailto:info@sibaribonato.com">info@sibaribonato.com</a> | <a href="tel:+393477110097">+39 347 711 0097</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-banner__inner">
+            <h3 class="cookie-banner__title">Questo sito utilizza cookie</h3>
+            <p class="cookie-banner__text">Utilizziamo cookie tecnici necessari al funzionamento del sito e cookie analitici (Google Analytics) per analizzare il traffico in forma anonima. Puoi accettare tutti i cookie o gestire le tue preferenze. <a href="privacy.html" class="cookie-banner__link">Privacy Policy</a></p>
+            <div class="cookie-banner__actions">
+                <button class="cookie-banner__btn cookie-banner__btn--accept" id="cookieAcceptAll">Accetta tutti</button>
+                <button class="cookie-banner__btn cookie-banner__btn--technical" id="cookieTechnical">Solo tecnici</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Ball -->
+    <button class="cookie-ball" id="cookieBall" aria-label="Gestisci cookie" title="Gestisci cookie">&#x1F36A;</button>
+
+    <script src="js/main.js" defer></script>
+</body>
+</html>
