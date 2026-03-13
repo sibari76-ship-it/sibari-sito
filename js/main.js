@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (galItems.length > 0) {
         galItems.forEach(function (item, i) {
             item.setAttribute('data-anim', animTypes[i % animTypes.length]);
-            item.style.transitionDelay = (i * 0.15) + 's';
+            item.style.transitionDelay = (i * 0.06) + 's';
         });
 
         var galObserver = new IntersectionObserver(function (entries) {
