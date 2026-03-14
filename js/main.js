@@ -1,20 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     // =========================================
-    // Header line + menu button animation
+    // Menu button reference
     // =========================================
-    var headerLine = document.querySelector('.header__line');
     var menuBtn = document.querySelector('.menu-btn');
-
-    if (headerLine && menuBtn) {
-        setTimeout(function () {
-            headerLine.classList.add('header__line--animate');
-        }, 100);
-
-        headerLine.addEventListener('animationend', function () {
-            menuBtn.classList.add('menu-btn--visible');
-        });
-    }
 
     // =========================================
     // Overlay nav open / close

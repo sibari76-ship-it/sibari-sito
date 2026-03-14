@@ -209,22 +209,27 @@ button {
     width: auto;
 }
 
-/* Animated line */
-.header__line {
-    flex: 1;
-    height: 1.5px;
-    background: var(--color-accent);
-    transform: scaleX(0);
-    transform-origin: left center;
+/* Pulsing dot */
+.header__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #F0C800;
+    margin-left: auto;
+    margin-right: 10px;
+    flex-shrink: 0;
+    animation: dotPulse 2s ease-in-out infinite;
 }
 
-.header__line--animate {
-    animation: headerLineGrow 0.6s ease-out forwards;
-}
-
-@keyframes headerLineGrow {
-    from { transform: scaleX(0); }
-    to   { transform: scaleX(1); }
+@keyframes dotPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(240, 200, 0, 0.4);
+    }
+    50% {
+        transform: scale(1.4);
+        box-shadow: 0 0 8px 4px rgba(240, 200, 0, 0.25);
+    }
 }
 
 /* Menu button */
@@ -234,18 +239,6 @@ button {
     gap: 7px;
     width: 24px;
     flex-shrink: 0;
-    opacity: 0;
-    pointer-events: none;
-}
-
-.menu-btn--visible {
-    animation: menuBtnAppear 0.2s ease-out forwards;
-    pointer-events: auto;
-}
-
-@keyframes menuBtnAppear {
-    from { opacity: 0; }
-    to   { opacity: 1; }
 }
 
 .menu-btn__bar {
@@ -1194,56 +1187,140 @@ button {
    Footer
    ======================================== */
 
+/* Footer — hidden on mobile, visible on desktop */
 .footer {
-    padding: var(--space-xl) 0;
-    border-top: 1px solid var(--color-border);
+    display: none;
     background-color: #0A0A0A;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 48px 0 0;
 }
 
 .footer__inner {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-lg);
-    align-items: center;
-    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 40px;
 }
 
-.footer__list {
+.footer__col--brand {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--space-md);
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer__logo img {
+    height: 32px;
+    width: auto;
+}
+
+.footer__tagline {
+    font-size: 0.875rem;
+    font-weight: var(--fw-light);
+    color: #999;
+}
+
+.footer__col--links .footer__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .footer__link {
-    font-size: var(--fs-sm);
+    font-size: 0.875rem;
     font-weight: var(--fw-light);
-    color: #6B7280;
+    color: #CCC;
     transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer__link:hover {
-    color: var(--color-accent);
+    color: #F0C800;
 }
 
-.footer__legal {
-    font-size: 0.8125rem;
+.footer__col--contact {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer__contact-link {
+    font-size: 0.875rem;
     font-weight: var(--fw-light);
-    color: #6B7280;
-    line-height: 1.8;
-}
-
-.footer__legal p + p {
-    margin-top: 4px;
-}
-
-.footer__legal a {
-    color: #6B7280;
+    color: #CCC;
     transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.footer__legal a:hover {
-    color: var(--color-accent);
+.footer__contact-link:hover {
+    color: #F0C800;
+}
+
+.footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 0.8125rem;
+    font-weight: var(--fw-light);
+    color: #999;
+}
+
+/* Bottom Bar — visible on mobile, hidden on desktop */
+.bottom-bar {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #0A0A0A;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    z-index: 90;
+    padding-bottom: env(safe-area-inset-bottom);
+    align-items: center;
+    justify-content: space-around;
+}
+
+.bottom-bar__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    flex: 1;
+    color: #999;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.bottom-bar__item--active {
+    color: #E8FF00;
+}
+
+.bottom-bar__icon {
+    width: 22px;
+    height: 22px;
+}
+
+.bottom-bar__label {
+    font-size: 10px;
+    font-weight: var(--fw-light);
+    letter-spacing: 0.02em;
+}
+
+@media (max-width: 768px) {
+    .bottom-bar {
+        display: flex;
+    }
+    body {
+        padding-bottom: 60px;
+    }
+}
+
+@media (min-width: 769px) {
+    .footer {
+        display: block;
+    }
 }
 
 

@@ -114,7 +114,7 @@
             <a href="index.html" class="header__logo">
                 <img decoding="async" src="Logo Sibari Bonato bianco.png" alt="Sibari Bonato - Consulente Marketing Gorizia" width="120" height="40">
             </a>
-            <div class="header__line"></div>
+            <div class="header__dot"></div>
             <button class="menu-btn" aria-label="Apri menu" aria-expanded="false">
                 <span class="menu-btn__bar"></span>
                 <span class="menu-btn__bar"></span>
@@ -285,10 +285,16 @@
         <img decoding="async" class="lightbox__img" src="" alt="">
     </div>
 
-    <!-- Footer -->
+    <!-- Footer (desktop) -->
     <footer class="footer">
         <div class="container footer__inner">
-            <nav class="footer__nav" aria-label="Navigazione footer">
+            <div class="footer__col footer__col--brand">
+                <a href="index.html" class="footer__logo">
+                    <img src="Logo Sibari Bonato bianco.png" alt="Sibari Bonato" width="120" height="40">
+                </a>
+                <p class="footer__tagline">Marketing strategico a Gorizia</p>
+            </div>
+            <nav class="footer__col footer__col--links" aria-label="Navigazione footer">
                 <ul class="footer__list">
                     <li><a href="index.html" class="footer__link">Home</a></li>
                     <li><a href="servizi.html" class="footer__link">Servizi</a></li>
@@ -298,14 +304,36 @@
                     <li><a href="contatti.html" class="footer__link">Contatti</a></li>
                 </ul>
             </nav>
-            <div class="footer__legal">
-                <p>&copy; 2026 Sibari Bonato &mdash; Tutti i diritti riservati</p>
-                <p>Bonato Sibari Vittorio | Via Italico Brass, 40 &mdash; 34170 Gorizia (GO) | P.IVA 01265380319</p>
-                <p><a href="privacy.html">Privacy Policy</a> | <a href="privacy.html">Cookie Policy</a></p>
-                <p><a href="mailto:info@sibaribonato.com">info@sibaribonato.com</a> | <a href="tel:+393477110097">+39 347 711 0097</a></p>
+            <div class="footer__col footer__col--contact">
+                <a href="mailto:info@sibaribonato.com" class="footer__contact-link">info@sibaribonato.com</a>
+                <a href="tel:+393477110097" class="footer__contact-link">+39 347 711 0097</a>
             </div>
         </div>
+        <div class="container footer__bottom">
+            <p>&copy; 2025 Sibari Bonato &mdash; P.IVA IT01265380319</p>
+            <a href="privacy.html" class="footer__link">Privacy Policy</a>
+        </div>
     </footer>
+
+    <!-- Bottom Bar (mobile) -->
+    <nav class="bottom-bar" aria-label="Navigazione rapida">
+        <a href="index.html" class="bottom-bar__item">
+            <svg class="bottom-bar__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1m-2 0h2"/></svg>
+            <span class="bottom-bar__label">Home</span>
+        </a>
+        <a href="servizi.html" class="bottom-bar__item">
+            <svg class="bottom-bar__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <span class="bottom-bar__label">Servizi</span>
+        </a>
+        <a href="work.html" class="bottom-bar__item bottom-bar__item--active">
+            <svg class="bottom-bar__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+            <span class="bottom-bar__label">Work</span>
+        </a>
+        <a href="contatti.html" class="bottom-bar__item">
+            <svg class="bottom-bar__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 7 12 13 2 7"/></svg>
+            <span class="bottom-bar__label">Contatti</span>
+        </a>
+    </nav>
 
     <!-- Cookie Banner -->
     <div class="cookie-banner" id="cookieBanner">
