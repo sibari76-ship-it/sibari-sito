@@ -1190,16 +1190,51 @@ button {
 /* Footer — hidden on mobile, visible on desktop */
 .footer {
     display: none;
-    background-color: #0A0A0A;
-    border-top: 1px solid rgba(255,255,255,0.08);
-    padding: 48px 0 0;
+    background: linear-gradient(to bottom, transparent 0%, #0A0A0A 60px, #0A0A0A 100%);
+    padding: 80px 0 0;
 }
 
-.footer__inner {
+.footer__hero {
+    text-align: center;
+    padding-bottom: 48px;
+}
+
+.footer__hero-title {
+    font-size: clamp(32px, 5vw, 64px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: #F5F5F5;
+    margin-bottom: 32px;
+}
+
+.footer__hero-title .accent {
+    color: #F0C800;
+}
+
+.footer__cta {
+    display: inline-block;
+    padding: 14px 36px;
+    border: 1.5px solid #F0C800;
+    border-radius: 8px;
+    color: #F0C800;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer__cta:hover {
+    background-color: #F0C800;
+    color: #0A0A0A;
+}
+
+.footer__cols {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 40px;
-    padding-bottom: 40px;
+    padding: 48px 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
 }
 
 .footer__col--brand {
@@ -1216,7 +1251,8 @@ button {
 .footer__tagline {
     font-size: 0.875rem;
     font-weight: var(--fw-light);
-    color: #999;
+    color: #CCC;
+    line-height: 1.5;
 }
 
 .footer__col--links .footer__list {
@@ -1253,6 +1289,16 @@ button {
     color: #F0C800;
 }
 
+.footer__social {
+    display: inline-flex;
+    color: #CCC;
+    transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer__social:hover {
+    color: #F0C800;
+}
+
 .footer__bottom {
     display: flex;
     justify-content: space-between;
@@ -1261,7 +1307,7 @@ button {
     border-top: 1px solid rgba(255,255,255,0.08);
     font-size: 0.8125rem;
     font-weight: var(--fw-light);
-    color: #999;
+    color: #CCC;
 }
 
 /* Bottom Bar — visible on mobile, hidden on desktop */
