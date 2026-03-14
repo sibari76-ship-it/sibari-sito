@@ -562,26 +562,68 @@ button {
 
 @media (min-width: 768px) {
     .services__grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    /* Row 1: full width */
+    .service-card--full {
+        grid-column: 1 / -1;
+    }
+
+    /* Row 2: two equal columns */
+    .service-card--half {
+        grid-column: span 3;
+    }
+
+    /* Row 3: three equal columns */
+    .service-card--third {
+        grid-column: span 2;
     }
 }
 
 .service-card {
+    position: relative;
     padding: var(--space-lg);
     background-color: var(--color-surface);
     border-radius: var(--radius);
     border: 1px solid var(--color-border);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    min-height: 220px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .service-card:hover {
     transform: translateY(-4px);
-    border-color: var(--color-accent);
+    border-color: rgba(240, 200, 0, 0.3);
+}
+
+/* Background number */
+.service-card::after {
+    content: attr(data-number);
+    position: absolute;
+    bottom: -10px;
+    right: 16px;
+    font-size: clamp(80px, 15vw, 160px);
+    font-weight: var(--fw-extrabold);
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.03);
+    pointer-events: none;
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card:hover::after {
+    color: rgba(255, 255, 255, 0.06);
 }
 
 .service-card__icon {
     display: block;
     margin-bottom: var(--space-sm);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card:hover .service-card__icon {
+    transform: scale(1.1);
 }
 
 .service-card__title {
@@ -614,8 +656,40 @@ button {
     opacity: 0.7;
 }
 
-.service-card--featured {
-    border-left: 3px solid var(--color-accent);
+/* Full-width featured card */
+.service-card--full {
+    min-height: 280px;
+    border-left: 2px solid var(--color-accent);
+}
+
+@media (min-width: 768px) {
+    .service-card--full {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-xl);
+    }
+
+    .service-card--full .service-card__content {
+        flex: 1;
+    }
+}
+
+.service-card__claim {
+    font-size: 1.125rem;
+    font-weight: var(--fw-light);
+    font-style: italic;
+    color: #F0C800;
+    line-height: var(--lh-base);
+    max-width: 320px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 767px) {
+    .service-card__claim {
+        margin-top: var(--space-md);
+        font-size: 1rem;
+    }
 }
 
 
