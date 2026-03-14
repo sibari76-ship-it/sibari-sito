@@ -169,23 +169,28 @@
             <a href="index.html" class="header__logo">
                 <img decoding="async" src="Logo Sibari Bonato bianco.png" alt="Sibari Bonato - Consulente Marketing Gorizia" width="120" height="40">
             </a>
-            <nav class="nav" aria-label="Navigazione principale">
-                <ul class="nav__list">
-                    <li><a href="index.html" class="nav__link">Home</a></li>
-                    <li><a href="servizi.html" class="nav__link nav__link--active" aria-current="page">Servizi</a></li>
-                    <li><a href="work.html" class="nav__link">Work</a></li>
-                    <li><a href="chi-sono.html" class="nav__link">Chi sono</a></li>
-                    <li><a href="faq.html" class="nav__link">FAQ</a></li>
-                    <li><a href="contatti.html" class="nav__link nav__link--cta">Contatti</a></li>
-                </ul>
-            </nav>
-            <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false">
-                <span class="nav-toggle__bar"></span>
-                <span class="nav-toggle__bar"></span>
-                <span class="nav-toggle__bar"></span>
+            <div class="header__line"></div>
+            <button class="menu-btn" aria-label="Apri menu" aria-expanded="false">
+                <span class="menu-btn__bar"></span>
+                <span class="menu-btn__bar"></span>
             </button>
         </div>
     </header>
+
+    <nav class="overlay" id="overlay" aria-label="Navigazione principale" aria-hidden="true">
+        <button class="overlay__close" aria-label="Chiudi menu">
+            <span class="overlay__close-bar"></span>
+            <span class="overlay__close-bar"></span>
+        </button>
+        <ul class="overlay__list">
+            <li class="overlay__item"><a href="index.html" class="overlay__link"><span class="overlay__number">01</span><span class="overlay__name">Home</span></a></li>
+            <li class="overlay__item"><a href="servizi.html" class="overlay__link overlay__link--active"><span class="overlay__number">02</span><span class="overlay__name">Servizi</span></a></li>
+            <li class="overlay__item"><a href="work.html" class="overlay__link"><span class="overlay__number">03</span><span class="overlay__name">Work</span></a></li>
+            <li class="overlay__item"><a href="chi-sono.html" class="overlay__link"><span class="overlay__number">04</span><span class="overlay__name">Chi sono</span></a></li>
+            <li class="overlay__item"><a href="faq.html" class="overlay__link"><span class="overlay__number">05</span><span class="overlay__name">FAQ</span></a></li>
+            <li class="overlay__item"><a href="contatti.html" class="overlay__link"><span class="overlay__number">06</span><span class="overlay__name">Contatti</span></a></li>
+        </ul>
+    </nav>
 
     <main>
 
@@ -218,14 +223,17 @@
                 </div>
                 <div class="service-detail__features">
                     <div class="feature reveal">
+                        <svg class="feature__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#F0C800" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="16" height="12" rx="2"/><path d="M7 5V3.5A1.5 1.5 0 0 1 8.5 2h3A1.5 1.5 0 0 1 13 3.5V5"/><circle cx="10" cy="11" r="3"/></svg>
                         <h3 class="feature__title">Fotografia di prodotto</h3>
                         <p class="feature__text">Still life, packshot e ambientate per e-commerce e cataloghi. Immagini che vendono.</p>
                     </div>
                     <div class="feature reveal">
+                        <svg class="feature__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#F0C800" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><circle cx="10" cy="10" r="1.5" fill="#F0C800" stroke="none"/><line x1="10" y1="2" x2="10" y2="5"/><line x1="10" y1="15" x2="10" y2="18"/><line x1="2" y1="10" x2="5" y2="10"/><line x1="15" y1="10" x2="18" y2="10"/></svg>
                         <h3 class="feature__title">Ritratti corporate</h3>
                         <p class="feature__text">Ritratti professionali per team, profili LinkedIn e comunicazione aziendale.</p>
                     </div>
                     <div class="feature reveal">
+                        <svg class="feature__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#F0C800" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="2" width="14" height="16" rx="1.5"/><line x1="6" y1="6" x2="14" y2="6"/><line x1="6" y1="9" x2="14" y2="9"/><line x1="6" y1="12" x2="10" y2="12"/></svg>
                         <h3 class="feature__title">Reportage aziendale</h3>
                         <p class="feature__text">Documentazione di eventi, processi produttivi e vita aziendale per social e sito web.</p>
                     </div>
@@ -268,14 +276,17 @@
                 </div>
                 <div class="service-detail__features">
                     <div class="feature reveal">
+                        <svg class="feature__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#F0C800" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><circle cx="10" cy="10" r="5"/><circle cx="10" cy="10" r="2"/></svg>
                         <h3 class="feature__title">Analisi e posizionamento</h3>
                         <p class="feature__text">Studio del mercato, dei competitor e del tuo pubblico per definire una posizione unica e difendibile.</p>
                     </div>
                     <div class="feature reveal">
+                        <svg class="feature__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#F0C800" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17V8l4-3v12"/><path d="M8 17V5l4-3v15"/><path d="M13 17V8l4-3v12"/></svg>
                         <h3 class="feature__title">Piano di comunicazione</h3>
                         <p class="feature__text">Strategia integrata con canali, messaggi e tempi definiti. Ogni azione ha un obiettivo misurabile.</p>
                     </div>
                     <div class="feature reveal">
+                        <svg class="feature__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#F0C800" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M17 10a7 7 0 1 1-7-7"/><polyline points="17 3 17 7 13 7"/><line x1="10" y1="10" x2="17" y2="3"/></svg>
                         <h3 class="feature__title">Consulenza continuativa</h3>
                         <p class="feature__text">Affiancamento nel tempo per adattare la strategia ai risultati e alle evoluzioni del mercato.</p>
                     </div>
@@ -304,14 +315,17 @@
                 </div>
                 <div class="service-detail__features">
                     <div class="feature reveal">
+                        <svg class="feature__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#F0C800" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2 L18 7.5 L18 14.5 L10 18 L2 14.5 L2 7.5 Z"/></svg>
                         <h3 class="feature__title">Logo e identità visiva</h3>
                         <p class="feature__text">Design del marchio, palette colori, tipografia e linee guida per un uso coerente su tutti i supporti.</p>
                     </div>
                     <div class="feature reveal">
+                        <svg class="feature__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#F0C800" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="2" width="14" height="16" rx="1.5"/><line x1="6" y1="6" x2="14" y2="6"/><line x1="6" y1="9" x2="14" y2="9"/><line x1="6" y1="12" x2="10" y2="12"/></svg>
                         <h3 class="feature__title">Materiali di comunicazione</h3>
                         <p class="feature__text">Biglietti da visita, brochure, presentazioni e tutti i materiali che rappresentano il tuo brand.</p>
                     </div>
                     <div class="feature reveal">
+                        <svg class="feature__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#F0C800" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><circle cx="10" cy="10" r="5"/><circle cx="10" cy="10" r="2"/></svg>
                         <h3 class="feature__title">Brand strategy</h3>
                         <p class="feature__text">Definizione di valori, personalità e tono di voce per una comunicazione autentica e riconoscibile.</p>
                     </div>
@@ -351,14 +365,17 @@
                 </div>
                 <div class="service-detail__features">
                     <div class="feature reveal">
+                        <svg class="feature__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#F0C800" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="12" height="9" rx="1.5"/><line x1="7" y1="12" x2="7" y2="15"/><line x1="4" y1="15" x2="10" y2="15"/><rect x="13" y="6" width="6" height="11" rx="1"/><line x1="15" y1="14.5" x2="17" y2="14.5"/></svg>
                         <h3 class="feature__title">Design responsive</h3>
                         <p class="feature__text">Siti che funzionano perfettamente su ogni dispositivo, dal telefono al desktop.</p>
                     </div>
                     <div class="feature reveal">
+                        <svg class="feature__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#F0C800" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 6 11 13 7 9 2 14"/><polyline points="13 6 18 6 18 11"/></svg>
                         <h3 class="feature__title">SEO e performance</h3>
                         <p class="feature__text">Codice pulito, caricamento veloce e struttura ottimizzata per farti trovare su Google.</p>
                     </div>
                     <div class="feature reveal">
+                        <svg class="feature__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#F0C800" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 2 7 10 13 10 13 18"/><polyline points="4 7 7 10 10 7"/><polyline points="10 13 13 10 16 13"/></svg>
                         <h3 class="feature__title">Conversione</h3>
                         <p class="feature__text">Struttura e contenuti pensati per guidare il visitatore verso l'azione che vuoi: contatto, acquisto, richiesta.</p>
                     </div>
@@ -387,14 +404,17 @@
                 </div>
                 <div class="service-detail__features">
                     <div class="feature reveal">
+                        <svg class="feature__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#F0C800" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v12l4-3h6a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2Z"/><line x1="7" y1="6" x2="13" y2="6"/><line x1="7" y1="9" x2="11" y2="9"/></svg>
                         <h3 class="feature__title">Content strategy</h3>
                         <p class="feature__text">Pianificazione editoriale e creazione di contenuti che parlano al tuo pubblico e supportano gli obiettivi di business.</p>
                     </div>
                     <div class="feature reveal">
+                        <svg class="feature__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#F0C800" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="5" r="2.5"/><circle cx="15" cy="5" r="2.5"/><circle cx="15" cy="15" r="2.5"/><circle cx="5" cy="15" r="2.5"/><line x1="7.2" y1="6" x2="12.8" y2="4"/><line x1="15" y1="7.5" x2="15" y2="12.5"/><line x1="12.8" y1="16" x2="7.2" y2="14"/><line x1="5" y1="12.5" x2="5" y2="7.5"/></svg>
                         <h3 class="feature__title">Social media</h3>
                         <p class="feature__text">Gestione strategica dei canali social con contenuti coerenti al brand e orientati alla conversione.</p>
                     </div>
                     <div class="feature reveal">
+                        <svg class="feature__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#F0C800" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><polyline points="10 6 10 10 13 13"/></svg>
                         <h3 class="feature__title">Campagne digitali</h3>
                         <p class="feature__text">Advertising mirato su Google e social per raggiungere nuovi clienti con budget ottimizzati.</p>
                     </div>

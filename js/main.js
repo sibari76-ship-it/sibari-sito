@@ -1,27 +1,62 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     // =========================================
-    // Mobile nav toggle
+    // Header line + menu button animation
     // =========================================
-    var toggle = document.querySelector('.nav-toggle');
-    var nav = document.querySelector('.nav');
+    var headerLine = document.querySelector('.header__line');
+    var menuBtn = document.querySelector('.menu-btn');
 
-    if (toggle && nav) {
-        toggle.addEventListener('click', function () {
-            var expanded = toggle.getAttribute('aria-expanded') === 'true';
-            toggle.setAttribute('aria-expanded', String(!expanded));
-            nav.classList.toggle('nav--open');
-            document.body.style.overflow = expanded ? '' : 'hidden';
+    if (headerLine && menuBtn) {
+        setTimeout(function () {
+            headerLine.classList.add('header__line--animate');
+        }, 100);
+
+        headerLine.addEventListener('animationend', function () {
+            menuBtn.classList.add('menu-btn--visible');
         });
+    }
 
-        nav.addEventListener('click', function (e) {
-            if (e.target.matches('.nav__link')) {
-                toggle.setAttribute('aria-expanded', 'false');
-                nav.classList.remove('nav--open');
-                document.body.style.overflow = '';
+    // =========================================
+    // Overlay nav open / close
+    // =========================================
+    var overlay = document.getElementById('overlay');
+
+    function openOverlay() {
+        if (!overlay) return;
+        overlay.classList.add('overlay--open');
+        overlay.setAttribute('aria-hidden', 'false');
+        if (menuBtn) menuBtn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeOverlay() {
+        if (!overlay) return;
+        overlay.classList.remove('overlay--open');
+        overlay.setAttribute('aria-hidden', 'true');
+        if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+    }
+
+    if (menuBtn) {
+        menuBtn.addEventListener('click', openOverlay);
+    }
+
+    if (overlay) {
+        var closeBtn = overlay.querySelector('.overlay__close');
+        if (closeBtn) closeBtn.addEventListener('click', closeOverlay);
+
+        overlay.addEventListener('click', function (e) {
+            if (e.target.matches('.overlay__link') || e.target.closest('.overlay__link')) {
+                closeOverlay();
             }
         });
     }
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && overlay && overlay.classList.contains('overlay--open')) {
+            closeOverlay();
+        }
+    });
 
     // =========================================
     // Navbar scroll — add border on scroll

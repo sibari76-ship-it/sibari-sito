@@ -137,23 +137,28 @@
             <a href="index.html" class="header__logo">
                 <img decoding="async" src="Logo Sibari Bonato bianco.png" alt="Sibari Bonato - Consulente Marketing Gorizia" width="120" height="40">
             </a>
-            <nav class="nav" aria-label="Navigazione principale">
-                <ul class="nav__list">
-                    <li><a href="index.html" class="nav__link">Home</a></li>
-                    <li><a href="servizi.html" class="nav__link">Servizi</a></li>
-                    <li><a href="work.html" class="nav__link">Work</a></li>
-                    <li><a href="chi-sono.html" class="nav__link">Chi sono</a></li>
-                    <li><a href="faq.html" class="nav__link">FAQ</a></li>
-                    <li><a href="contatti.html" class="nav__link nav__link--cta nav__link--active" aria-current="page">Contatti</a></li>
-                </ul>
-            </nav>
-            <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false">
-                <span class="nav-toggle__bar"></span>
-                <span class="nav-toggle__bar"></span>
-                <span class="nav-toggle__bar"></span>
+            <div class="header__line"></div>
+            <button class="menu-btn" aria-label="Apri menu" aria-expanded="false">
+                <span class="menu-btn__bar"></span>
+                <span class="menu-btn__bar"></span>
             </button>
         </div>
     </header>
+
+    <nav class="overlay" id="overlay" aria-label="Navigazione principale" aria-hidden="true">
+        <button class="overlay__close" aria-label="Chiudi menu">
+            <span class="overlay__close-bar"></span>
+            <span class="overlay__close-bar"></span>
+        </button>
+        <ul class="overlay__list">
+            <li class="overlay__item"><a href="index.html" class="overlay__link"><span class="overlay__number">01</span><span class="overlay__name">Home</span></a></li>
+            <li class="overlay__item"><a href="servizi.html" class="overlay__link"><span class="overlay__number">02</span><span class="overlay__name">Servizi</span></a></li>
+            <li class="overlay__item"><a href="work.html" class="overlay__link"><span class="overlay__number">03</span><span class="overlay__name">Work</span></a></li>
+            <li class="overlay__item"><a href="chi-sono.html" class="overlay__link"><span class="overlay__number">04</span><span class="overlay__name">Chi sono</span></a></li>
+            <li class="overlay__item"><a href="faq.html" class="overlay__link"><span class="overlay__number">05</span><span class="overlay__name">FAQ</span></a></li>
+            <li class="overlay__item"><a href="contatti.html" class="overlay__link overlay__link--active"><span class="overlay__number">06</span><span class="overlay__name">Contatti</span></a></li>
+        </ul>
+    </nav>
 
     <main>
 
