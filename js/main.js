@@ -325,6 +325,50 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // =========================================
+    // PDF Modal (work.html)
+    // =========================================
+    var pdfModal = document.getElementById('pdfModal');
+
+    if (pdfModal) {
+        var pdfIframe = document.getElementById('pdfIframe');
+        var pdfClose = pdfModal.querySelector('.pdf-modal__close');
+
+        function openPdfModal(pdfUrl) {
+            pdfIframe.src = pdfUrl;
+            pdfModal.classList.add('pdf-modal--open');
+            pdfModal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePdfModal() {
+            pdfModal.classList.remove('pdf-modal--open');
+            pdfModal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            setTimeout(function () { pdfIframe.src = ''; }, 400);
+        }
+
+        document.addEventListener('click', function (e) {
+            var btn = e.target.closest('.project-card__pdf-btn');
+            if (btn) {
+                var pdfUrl = btn.getAttribute('data-pdf');
+                if (pdfUrl) openPdfModal(pdfUrl);
+            }
+        });
+
+        pdfClose.addEventListener('click', closePdfModal);
+
+        pdfModal.addEventListener('click', function (e) {
+            if (e.target === pdfModal) closePdfModal();
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && pdfModal.classList.contains('pdf-modal--open')) {
+                closePdfModal();
+            }
+        });
+    }
+
     /* ========================================
        Contact Form (Formspree)
        ======================================== */
