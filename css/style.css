@@ -1333,14 +1333,14 @@ button {
     justify-content: center;
     gap: 4px;
     flex: 1;
-    color: #999;
+    color: #CCC;
     text-decoration: none;
     transition: color 0.3s ease;
     -webkit-tap-highlight-color: transparent;
 }
 
 .bottom-bar__item--active {
-    color: #E8FF00;
+    color: #F0C800;
 }
 
 .bottom-bar__icon {
@@ -1855,10 +1855,10 @@ button {
 
 .cookie-ball {
     position: fixed;
-    bottom: 24px;
+    bottom: 80px;
     right: 24px;
-    width: 36px;
-    height: 36px;
+    width: 30px;
+    height: 30px;
     background-color: var(--color-accent);
     border-radius: 50%;
     border: none;
