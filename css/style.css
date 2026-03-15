@@ -2341,12 +2341,12 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 140px;
+    height: 200px;
 }
 
 .logo-grid__img img {
-    height: 140px;
-    max-width: 200px;
+    height: 200px;
+    max-width: 280px;
     width: auto;
     object-fit: contain;
     opacity: 0.85;
