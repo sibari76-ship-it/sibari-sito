@@ -109,6 +109,26 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // =========================================
+    // Logo Grid — staggered entrance
+    // =========================================
+    var logoItems = document.querySelectorAll('.logo-grid__item');
+
+    if (logoItems.length > 0) {
+        var logoObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('logo-grid__item--visible');
+                    logoObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        logoItems.forEach(function (el) {
+            logoObserver.observe(el);
+        });
+    }
+
+    // =========================================
     // Intersection Observer — section lines
     // =========================================
     var sectionLines = document.querySelectorAll('.section-line');

@@ -2263,6 +2263,162 @@ button {
 
 
 /* ========================================
+   Portfolio Preview (Homepage)
+   ======================================== */
+
+.portfolio-preview {
+    padding: var(--space-3xl) 0;
+    background: var(--color-glass);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.portfolio-preview__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    margin-top: var(--space-xl);
+}
+
+@media (min-width: 768px) {
+    .portfolio-preview__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.portfolio-preview__cta {
+    text-align: center;
+    margin-top: var(--space-xl);
+}
+
+
+
+/* ========================================
+   Logo Grid (Homepage)
+   ======================================== */
+
+.logo-grid-section {
+    padding: var(--space-3xl) 0;
+}
+
+.logo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+    margin-top: var(--space-xl);
+}
+
+@media (min-width: 768px) {
+    .logo-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.logo-grid__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logo-grid__item--visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.logo-grid__item:nth-child(1) { transition-delay: 0s; }
+.logo-grid__item:nth-child(2) { transition-delay: 0.1s; }
+.logo-grid__item:nth-child(3) { transition-delay: 0.2s; }
+.logo-grid__item:nth-child(4) { transition-delay: 0.3s; }
+.logo-grid__item:nth-child(5) { transition-delay: 0.4s; }
+.logo-grid__item:nth-child(6) { transition-delay: 0.5s; }
+
+.logo-grid__img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 140px;
+}
+
+.logo-grid__img img {
+    height: 140px;
+    max-width: 200px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.85;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logo-grid__item:hover .logo-grid__img img {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.logo-grid__name {
+    font-size: 15px;
+    font-weight: var(--fw-semibold);
+    color: var(--color-text);
+    margin-top: 12px;
+}
+
+.logo-grid__desc {
+    font-size: 13px;
+    font-weight: var(--fw-light);
+    color: #CCCCCC;
+    margin-top: 2px;
+}
+
+
+/* ========================================
+   About Preview (Homepage)
+   ======================================== */
+
+.about-preview {
+    padding: var(--space-3xl) 0;
+    background: var(--color-glass);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.about-preview__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    margin-top: var(--space-xl);
+}
+
+@media (min-width: 768px) {
+    .about-preview__grid {
+        grid-template-columns: 1.4fr 1fr;
+        align-items: center;
+    }
+}
+
+.about-preview__text {
+    color: var(--color-text-body);
+    font-weight: var(--fw-light);
+    line-height: var(--lh-base);
+    font-size: var(--fs-base);
+}
+
+.about-preview__cta {
+    margin-top: var(--space-lg);
+}
+
+.about-preview__photo img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+}
+
+
+/* ========================================
    Lightbox Arrows
    ======================================== */
 
