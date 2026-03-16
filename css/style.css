@@ -202,11 +202,25 @@ button {
     display: flex;
     align-items: center;
     flex-shrink: 0;
+    gap: 10px;
 }
 
 .header__logo img {
     height: 40px;
     width: auto;
+}
+
+.header__name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #F5F5F5;
+    white-space: nowrap;
+}
+
+@media (max-width: 400px) {
+    .header__name {
+        display: none;
+    }
 }
 
 /* Pulsing dot */
