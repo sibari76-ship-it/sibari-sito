@@ -2373,6 +2373,35 @@ button {
     margin-top: 2px;
 }
 
+@media (max-width: 768px) {
+    .logo-grid {
+        gap: 12px;
+    }
+
+    .logo-grid__item {
+        max-height: 160px;
+        padding: 16px;
+    }
+
+    .logo-grid__img {
+        height: 80px;
+    }
+
+    .logo-grid__img img {
+        height: 80px;
+        max-width: 140px;
+    }
+
+    .logo-grid__name {
+        font-size: 13px;
+        margin-top: 8px;
+    }
+
+    .logo-grid__desc {
+        font-size: 11px;
+    }
+}
+
 
 /* ========================================
    About Preview (Homepage)
@@ -2541,4 +2570,43 @@ button {
     .faq__question {
         font-size: var(--fs-base);
     }
+}
+
+
+/* ========================================
+   Foto Preview (Homepage)
+   ======================================== */
+
+.foto-preview {
+    padding: var(--space-3xl) 0;
+}
+
+.foto-preview__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-top: var(--space-xl);
+}
+
+.foto-preview__grid .gal__item {
+    aspect-ratio: 4 / 3;
+    height: auto;
+}
+
+.foto-preview__cta {
+    text-align: center;
+    margin-top: var(--space-xl);
+}
+
+/* ========================================
+   Fotografia Page — Intro
+   ======================================== */
+
+.foto-page-intro {
+    max-width: 800px;
+    font-size: var(--fs-base);
+    font-weight: var(--fw-light);
+    line-height: var(--lh-base);
+    color: var(--color-text-body);
+    margin-bottom: var(--space-xl);
 }
