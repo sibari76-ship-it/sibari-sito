@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     logoObserver.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.2 });
 
         logoItems.forEach(function (el) {
             logoObserver.observe(el);
