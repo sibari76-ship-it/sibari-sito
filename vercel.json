@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    { "source": "/chi-sono", "destination": "/chi-sono.html", "permanent": true },
+    { "source": "/servizi", "destination": "/servizi.html", "permanent": true },
+    { "source": "/contatti", "destination": "/contatti.html", "permanent": true },
+    { "source": "/work", "destination": "/work.html", "permanent": true },
+    { "source": "/faq", "destination": "/faq.html", "permanent": true }
+  ]
+}
