@@ -2335,22 +2335,22 @@ button {
     align-items: center;
     text-align: center;
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-30px);
+    transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .logo-grid__item--visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
 }
 
 .logo-grid__item:nth-child(1) { transition-delay: 0s; }
-.logo-grid__item:nth-child(2) { transition-delay: 0.1s; }
-.logo-grid__item:nth-child(3) { transition-delay: 0.2s; }
-.logo-grid__item:nth-child(4) { transition-delay: 0.3s; }
-.logo-grid__item:nth-child(5) { transition-delay: 0.4s; }
-.logo-grid__item:nth-child(6) { transition-delay: 0.5s; }
+.logo-grid__item:nth-child(2) { transition-delay: 0.12s; }
+.logo-grid__item:nth-child(3) { transition-delay: 0.24s; }
+.logo-grid__item:nth-child(4) { transition-delay: 0.36s; }
+.logo-grid__item:nth-child(5) { transition-delay: 0.48s; }
+.logo-grid__item:nth-child(6) { transition-delay: 0.6s; }
 
 .logo-grid__img {
     display: flex;
@@ -2390,26 +2390,32 @@ button {
 
 @media (max-width: 768px) {
     .logo-grid {
+        grid-template-columns: 1fr;
         gap: 12px;
     }
 
     .logo-grid__item {
-        max-height: 160px;
-        padding: 16px;
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+        gap: 16px;
     }
 
     .logo-grid__img {
+        width: 80px;
         height: 80px;
+        flex-shrink: 0;
     }
 
     .logo-grid__img img {
+        width: 80px;
         height: 80px;
-        max-width: 140px;
+        max-width: none;
     }
 
     .logo-grid__name {
         font-size: 13px;
-        margin-top: 8px;
+        margin-top: 0;
     }
 
     .logo-grid__desc {
