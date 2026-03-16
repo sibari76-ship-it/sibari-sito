@@ -2057,6 +2057,21 @@ button {
     transform: scale(1.1);
 }
 
+@media (max-width: 768px) {
+    .cookie-ball {
+        width: 24px;
+        height: 24px;
+        right: auto;
+        left: 16px;
+        bottom: 74px;
+    }
+
+    .cookie-ball svg {
+        width: 12px;
+        height: 12px;
+    }
+}
+
 
 /* ========================================
    Privacy Policy Page
