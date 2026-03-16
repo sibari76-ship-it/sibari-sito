@@ -16,7 +16,7 @@ Sito web statico di **Sibari Bonato**, consulente di marketing strategico, fotog
 ├── servizi.html                        # Pagina Servizi
 ├── chi-sono.html                       # Pagina Chi Sono
 ├── contatti.html                       # Pagina Contatti
-├── Logo Sibari Bonato bianco.png       # Logo bianco per header (sfondo scuro)
+├── logo-sibari-bonato.png       # Logo bianco per header (sfondo scuro)
 ├── Logo Sibari Bonato nero.png         # Logo nero (per uso su sfondo chiaro)
 ├── css/
 │   └── style.css                       # Foglio di stile unico
