@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sibaribonato.com/sitemap.xml
+Sitemap: https://www.sibaribonato.com/sitemap.xml

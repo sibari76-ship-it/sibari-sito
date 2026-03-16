@@ -396,7 +396,7 @@ button {
     content: '';
     position: absolute;
     inset: -30%;
-    background-image: url('../foto-sito/fotohome.jpg');
+    background-image: url('../foto-sito/fotohome.webp');
     background-size: cover;
     background-position: center;
     filter: grayscale(100%);
