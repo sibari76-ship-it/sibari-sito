@@ -123,8 +123,12 @@
                             <p class="contact-item__value">Via Brass, 40<br>Gorizia (GO)</p>
                         </div>
                     </div>
-                    <div class="contact__map reveal">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22209.863285948!2d13.604!3d45.941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477b0b2bca571b47%3A0xb9c3e7c439b79d97!2sGorizia%20GO!5e0!3m2!1sit!2sit!4v1700000000000!5m2!1sit!2sit" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mappa di Gorizia - Sibari Bonato"></iframe>
+                    <div class="contact__map reveal" id="mapContainer">
+                        <div class="map-placeholder" id="mapPlaceholder">
+                            <p class="map-placeholder__text">Accetta i cookie per visualizzare la mappa</p>
+                            <button class="map-placeholder__btn" id="mapAcceptCookies">Accetta cookie</button>
+                        </div>
+                        <iframe id="mapIframe" data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22209.863285948!2d13.604!3d45.941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477b0b2bca571b47%3A0xb9c3e7c439b79d97!2sGorizia%20GO!5e0!3m2!1sit!2sit!4v1700000000000!5m2!1sit!2sit" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mappa di Gorizia - Sibari Bonato" style="display:none"></iframe>
                     </div>
                 </div>
             </div>
@@ -172,6 +176,14 @@
                         <div class="contact-form__group">
                             <label for="message" class="contact-form__label">Raccontami il tuo progetto</label>
                             <textarea id="message" name="message" class="contact-form__textarea" placeholder="Descrivi brevemente il tuo progetto o la tua idea" rows="5" required></textarea>
+                        </div>
+
+                        <div class="contact-form__group contact-form__group--checkbox">
+                            <label class="contact-form__checkbox-label">
+                                <input type="checkbox" name="privacy" class="contact-form__checkbox" required>
+                                <span class="contact-form__checkbox-custom"></span>
+                                <span class="contact-form__checkbox-text">Ho letto e accetto la <a href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a></span>
+                            </label>
                         </div>
 
                         <button type="submit" class="contact-form__submit" id="contactSubmitBtn">Invia messaggio</button>
@@ -287,5 +299,36 @@
     <button class="cookie-ball" id="cookieBall" aria-label="Gestisci cookie" title="Gestisci cookie"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.7 1.2a1 1 0 0 1 2.6 0l.15.9a.6.6 0 0 0 .84.42l.8-.42a1 1 0 0 1 1.3 1.3l-.42.8a.6.6 0 0 0 .42.84l.9.15a1 1 0 0 1 0 2.6l-.9.15a.6.6 0 0 0-.42.84l.42.8a1 1 0 0 1-1.3 1.3l-.8-.42a.6.6 0 0 0-.84.42l-.15.9a1 1 0 0 1-2.6 0l-.15-.9a.6.6 0 0 0-.84-.42l-.8.42a1 1 0 0 1-1.3-1.3l.42-.8a.6.6 0 0 0-.42-.84l-.9-.15a1 1 0 0 1 0-2.6l.9-.15a.6.6 0 0 0 .42-.84l-.42-.8a1 1 0 0 1 1.3-1.3l.8.42a.6.6 0 0 0 .84-.42l.15-.9Z" stroke="#0A0A0A" stroke-width="1.2"/><circle cx="8" cy="8" r="2.5" stroke="#0A0A0A" stroke-width="1.2"/></svg></button>
 
     <script src="js/main.js" defer></script>
+    <script>
+    (function(){
+        var consent = localStorage.getItem('cookie_consent');
+        var placeholder = document.getElementById('mapPlaceholder');
+        var iframe = document.getElementById('mapIframe');
+        var acceptBtn = document.getElementById('mapAcceptCookies');
+
+        function loadMap(){
+            if(iframe && iframe.dataset.src){
+                iframe.src = iframe.dataset.src;
+                iframe.style.display = '';
+            }
+            if(placeholder) placeholder.style.display = 'none';
+        }
+
+        if(consent === 'all'){
+            loadMap();
+        }
+
+        if(acceptBtn){
+            acceptBtn.addEventListener('click', function(){
+                localStorage.setItem('cookie_consent', 'all');
+                loadMap();
+                var banner = document.getElementById('cookieBanner');
+                if(banner) banner.classList.remove('cookie-banner--visible');
+                var ball = document.getElementById('cookieBall');
+                if(ball) setTimeout(function(){ ball.classList.add('cookie-ball--visible'); }, 400);
+            });
+        }
+    })();
+    </script>
 </body>
 </html>

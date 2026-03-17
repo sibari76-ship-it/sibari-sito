@@ -329,6 +329,14 @@ document.addEventListener('DOMContentLoaded', function () {
             cookieAcceptAll.addEventListener('click', function () {
                 localStorage.setItem('cookie_consent', 'all');
                 hideCookieBanner();
+                // Load blocked third-party content (e.g. Google Maps)
+                var mapIframe = document.getElementById('mapIframe');
+                var mapPlaceholder = document.getElementById('mapPlaceholder');
+                if (mapIframe && mapIframe.dataset.src) {
+                    mapIframe.src = mapIframe.dataset.src;
+                    mapIframe.style.display = '';
+                }
+                if (mapPlaceholder) mapPlaceholder.style.display = 'none';
             });
         }
 
