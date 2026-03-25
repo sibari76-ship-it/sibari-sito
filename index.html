@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sibari Bonato | Consulente Marketing Gorizia | Realizzazione Siti Web &amp; Branding FVG</title>
+
+    <!-- Critical preloads (early discovery) -->
+    <link rel="preload" href="css/style.css" as="style">
+    <link rel="preload" as="image" href="foto-sito/fotografo-gorizia-doppia-esposizione-urbana.webp" type="image/webp" fetchpriority="high">
+    <link rel="preload" href="logo-sibari-bonato.webp" as="image" type="image/webp">
+
+    <meta name="description" content="Consulente di marketing strategico a Gorizia. Realizzazione siti web, branding, logo design e social media per aziende in Friuli Venezia Giulia. Risultati misurabili, non solo bel design.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.sibaribonato.com/" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.sibaribonato.com/" />
     <meta property="og:title" content="Sibari Bonato | Marketing Strategico e Web Design a Gorizia" />
@@ -17,11 +29,6 @@
     <meta name="twitter:title" content="Sibari Bonato | Marketing Strategico e Web Design a Gorizia" />
     <meta name="twitter:description" content="Consulente di marketing strategico a Gorizia. Branding, web design e comunicazione digitale fondati sul neuromarketing. Risultati misurabili per PMI e imprenditori in FVG." />
     <meta name="twitter:image" content="https://www.sibaribonato.com/og-image.jpg" />
-    <link rel="canonical" href="https://www.sibaribonato.com/" />
-    <link rel="preload" as="image" href="foto-sito/fotografo-gorizia-doppia-esposizione-urbana.webp" type="image/webp">
-    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
-    <meta name="description" content="Consulente di marketing strategico a Gorizia. Realizzazione siti web, branding, logo design e social media per aziende in Friuli Venezia Giulia. Risultati misurabili, non solo bel design.">
-    <meta name="robots" content="index, follow">
 
     <!-- Geo -->
     <meta name="language" content="Italian">
@@ -32,13 +39,12 @@
     <meta name="description" lang="sl" content="Sibari Bonato - strokovnjak za strateški marketing, spletni dizajn in oblikovanje logotipov v Gorici. Delam s podjetji v Novi Gorici, zahodni Sloveniji in FVG.">
     <meta name="keywords" lang="sl" content="spletni dizajn Gorica, marketing Nova Gorica, oblikovanje logotipov Gorica, strateški marketing zahodna Slovenija, grafično oblikovanje Nova Gorica">
 
-    <!-- Font -->
+    <!-- Font (non-blocking) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;600;800&display=swap" as="style">
-    <link rel="preload" href="css/style.css" as="style">
-    <link rel="preload" href="logo-sibari-bonato.webp" as="image" type="image/webp">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;600;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;600;800&display=swap" rel="stylesheet"></noscript>
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="apple-touch-icon" href="favicon.svg">
@@ -90,7 +96,7 @@
             <a href="index.html" class="header__logo">
                 <picture>
                     <source srcset="logo-sibari-bonato.webp" type="image/webp">
-                    <img src="logo-sibari-bonato.png" alt="Sibari Bonato - Consulente Marketing Gorizia" width="120" height="40" loading="lazy" decoding="async">
+                    <img src="logo-sibari-bonato.png" alt="Sibari Bonato - Consulente Marketing Gorizia" width="120" height="40" fetchpriority="high" decoding="async">
                 </picture>
                 <span class="header__name">Sibari Bonato</span>
             </a>
