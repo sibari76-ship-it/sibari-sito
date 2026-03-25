@@ -24,7 +24,17 @@ Piccole e medie imprese che vogliono costruire una presenza professionale e una 
 - Chi sono: sibaribonato.com/chi-sono.html
 - Portfolio: sibaribonato.com/work.html
 - FAQ: sibaribonato.com/faq.html
+- Blog: sibaribonato.com/blog.html
 - Contatti: sibaribonato.com/contatti.html
+
+## Blog
+Articoli su marketing, design e comunicazione per PMI in Friuli Venezia Giulia:
+- Quanto costa un sito web a Gorizia? Fasce di prezzo 2026: sibaribonato.com/blog/quanto-costa-sito-web-gorizia.html
+- SEO locale a Gorizia: cosa conta davvero nel 2026: sibaribonato.com/blog/seo-locale-gorizia.html
+- Brand identity per PMI in Friuli Venezia Giulia: sibaribonato.com/blog/brand-identity-pmi-friuli.html
+- Neuromarketing e comunicazione aziendale: sibaribonato.com/blog/neuromarketing-comunicazione-aziendale.html
+- Social media per ristoranti a Gorizia: sibaribonato.com/blog/social-media-ristoranti-gorizia.html
+- Logo design a Gorizia: sibaribonato.com/blog/logo-design-gorizia.html
 
 ## Progetti realizzati
 - Dott. Marco Pacori (linguaggiodelcorpo.it): sito web e brand identity per il miglior ipnotista italiano, psicologo-psicoterapeuta con 30 anni di esperienza, autore di 7 libri Mondadori e Sperling & Kupfer, ospite Le Iene e Rai 1. Progetto: web design per professionisti della psicologia e formazione.
