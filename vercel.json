@@ -10,5 +10,16 @@
     { "source": "/work/", "destination": "/work.html", "permanent": true },
     { "source": "/faq", "destination": "/faq.html", "permanent": true },
     { "source": "/faq/", "destination": "/faq.html", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/(.*\\.png)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "image/png"
+        }
+      ]
+    }
   ]
 }
