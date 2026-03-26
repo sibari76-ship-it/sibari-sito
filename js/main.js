@@ -221,8 +221,6 @@ document.addEventListener('DOMContentLoaded', function () {
     if (lightbox) {
         var lightboxImg = lightbox.querySelector('.lightbox__img');
         var lightboxClose = lightbox.querySelector('.lightbox__close');
-        var lightboxPrev = lightbox.querySelector('.lightbox__prev');
-        var lightboxNext = lightbox.querySelector('.lightbox__next');
         var lightboxImages = [];
         var lightboxIndex = 0;
 
@@ -230,8 +228,6 @@ document.addEventListener('DOMContentLoaded', function () {
             var img = lightboxImages[lightboxIndex];
             lightboxImg.src = img.src;
             lightboxImg.alt = img.alt;
-            if (lightboxPrev) lightboxPrev.style.display = lightboxIndex > 0 ? '' : 'none';
-            if (lightboxNext) lightboxNext.style.display = lightboxIndex < lightboxImages.length - 1 ? '' : 'none';
         }
 
         document.addEventListener('click', function (e) {
@@ -253,19 +249,6 @@ document.addEventListener('DOMContentLoaded', function () {
             lightboxImages = [];
         }
 
-        if (lightboxPrev) {
-            lightboxPrev.addEventListener('click', function (e) {
-                e.stopPropagation();
-                if (lightboxIndex > 0) { lightboxIndex--; showLightboxImage(); }
-            });
-        }
-
-        if (lightboxNext) {
-            lightboxNext.addEventListener('click', function (e) {
-                e.stopPropagation();
-                if (lightboxIndex < lightboxImages.length - 1) { lightboxIndex++; showLightboxImage(); }
-            });
-        }
 
         lightboxClose.addEventListener('click', function (e) {
             e.stopPropagation();
