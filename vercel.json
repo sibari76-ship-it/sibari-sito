@@ -12,7 +12,8 @@
     { "source": "/faq/", "destination": "/faq.html", "permanent": true },
     { "source": "/category/sci/", "destination": "/servizi.html", "permanent": true },
     { "source": "/category/:slug/", "destination": "/", "permanent": true },
-    { "source": "/contattami/", "destination": "/contatti.html", "permanent": true }
+    { "source": "/contattami/", "destination": "/contatti.html", "permanent": true },
+    { "source": "/", "has": [{"type": "query", "key": "wpr_templates"}], "destination": "/", "permanent": true }
   ],
   "headers": [
     {
