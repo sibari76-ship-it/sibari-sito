@@ -1,4 +1,12 @@
 User-agent: *
 Allow: /
+Disallow: /comments/
+Disallow: /checkout/
+Disallow: /fine-settimana-in-bicicletta/
+Disallow: /category/
+Disallow: /feed/
+Disallow: /wp-admin/
+Disallow: /wp-content/
+Disallow: /wp-includes/
 
 Sitemap: https://www.sibaribonato.com/sitemap.xml
