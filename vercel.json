@@ -12,6 +12,8 @@
     { "source": "/faq/", "destination": "/faq.html", "permanent": true },
     { "source": "/marketing-monfalcone", "destination": "/marketing-monfalcone.html", "permanent": true },
     { "source": "/marketing-monfalcone/", "destination": "/marketing-monfalcone.html", "permanent": true },
+    { "source": "/marketing-grado", "destination": "/marketing-grado.html", "permanent": true },
+    { "source": "/marketing-grado/", "destination": "/marketing-grado.html", "permanent": true },
     { "source": "/category/sci/", "destination": "/servizi.html", "permanent": true },
     { "source": "/category/:slug/", "destination": "/", "permanent": true },
     { "source": "/contattami/", "destination": "/contatti.html", "permanent": true },
