@@ -1,12 +1,16 @@
 User-agent: *
 Allow: /
-Disallow: /comments/
-Disallow: /checkout/
-Disallow: /fine-settimana-in-bicicletta/
-Disallow: /category/
-Disallow: /feed/
-Disallow: /wp-admin/
-Disallow: /wp-content/
-Disallow: /wp-includes/
+Disallow: /404.html
+Disallow: /google46036c070b9d332d.html
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
 
 Sitemap: https://www.sibaribonato.com/sitemap.xml
+Sitemap: https://www.sibaribonato.com/sitemap_images.xml

@@ -9,12 +9,27 @@ document.addEventListener('DOMContentLoaded', function () {
     // Overlay nav open / close
     // =========================================
     var overlay = document.getElementById('overlay');
+    var overlayNameChars = [];
+
+    function prepareOverlayNameAnimation() {
+        overlayNameChars.forEach(function (char, index) {
+            var randomDelay = (Math.random() * 0.48) + ((index % 7) * 0.035);
+            var randomOffset = 30 + Math.round(Math.random() * 54);
+            var randomDuration = 1.18 + (Math.random() * 0.62);
+
+            char.style.setProperty('--overlay-char-delay', randomDelay.toFixed(3) + 's');
+            char.style.setProperty('--overlay-char-offset', randomOffset + 'px');
+            char.style.setProperty('--overlay-char-duration', randomDuration.toFixed(3) + 's');
+        });
+    }
 
     function openOverlay() {
         if (!overlay) return;
+        prepareOverlayNameAnimation();
         overlay.classList.add('overlay--open');
         overlay.setAttribute('aria-hidden', 'false');
         if (menuBtn) menuBtn.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('overlay-open');
         document.body.style.overflow = 'hidden';
     }
 
@@ -23,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
         overlay.classList.remove('overlay--open');
         overlay.setAttribute('aria-hidden', 'true');
         if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('overlay-open');
         document.body.style.overflow = '';
     }
 
@@ -31,11 +47,53 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (overlay) {
+        var overlayNames = overlay.querySelectorAll('.overlay__name');
         var closeBtn = overlay.querySelector('.overlay__close');
+        var serviceItems = overlay.querySelectorAll('.overlay__item--services');
         if (closeBtn) closeBtn.addEventListener('click', closeOverlay);
 
+        overlayNames.forEach(function (name, itemIndex) {
+            var label = name.textContent || '';
+            var chars = [];
+
+            for (var i = 0; i < label.length; i += 1) {
+                var char = label.charAt(i);
+                var safeChar = char === ' ' ? '&nbsp;' : char;
+                chars.push('<span class="overlay__name-char" data-overlay-char-index="' + itemIndex + '-' + i + '">' + safeChar + '</span>');
+            }
+
+            name.innerHTML = chars.join('');
+        });
+
+        overlayNameChars = overlay.querySelectorAll('.overlay__name-char');
+        prepareOverlayNameAnimation();
+
+        serviceItems.forEach(function (item) {
+            var toggle = item.querySelector('.overlay__services-toggle');
+            if (!toggle) return;
+            item.classList.remove('overlay__item--services-open');
+            toggle.setAttribute('aria-expanded', 'false');
+
+            toggle.addEventListener('click', function () {
+                var isOpen = item.classList.contains('overlay__item--services-open');
+
+                serviceItems.forEach(function (otherItem) {
+                    var otherToggle = otherItem.querySelector('.overlay__services-toggle');
+                    otherItem.classList.remove('overlay__item--services-open');
+                    if (otherToggle) {
+                        otherToggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+
+                if (!isOpen) {
+                    item.classList.add('overlay__item--services-open');
+                    toggle.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+
         overlay.addEventListener('click', function (e) {
-            if (e.target.matches('.overlay__link') || e.target.closest('.overlay__link')) {
+            if (e.target.matches('.overlay a') || e.target.closest('.overlay a')) {
                 closeOverlay();
             }
         });
@@ -48,16 +106,71 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // =========================================
+    // Hero slideshow — Ken Burns effect
+    // =========================================
+    var heroSlides = document.querySelectorAll('.hero-slide');
+    var kbAnims = ['kenBurns1', 'kenBurns2', 'kenBurns3'];
+    var currentHeroSlide = 0;
+    var heroSlideDuration = 7000;
+
+    if (heroSlides.length > 1) {
+        function startKenBurns(slide, animIndex) {
+            var img = slide.querySelector('img');
+            if (!img) return;
+            img.style.animation = 'none';
+            img.offsetHeight; // force reflow
+            img.style.animation = kbAnims[animIndex % kbAnims.length] + ' 8s ease-in-out forwards';
+        }
+
+        startKenBurns(heroSlides[0], 0);
+
+        setInterval(function () {
+            heroSlides[currentHeroSlide].classList.remove('hero-slide--active');
+            currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+            var nextSlide = heroSlides[currentHeroSlide];
+            startKenBurns(nextSlide, currentHeroSlide);
+            nextSlide.classList.add('hero-slide--active');
+        }, heroSlideDuration);
+    }
+
+    // =========================================
     // Navbar scroll — add border on scroll
     // =========================================
     var header = document.querySelector('.header');
 
     if (header) {
+        var navTicking = false;
         window.addEventListener('scroll', function () {
-            if (window.scrollY > 50) {
-                header.classList.add('header--scrolled');
-            } else {
-                header.classList.remove('header--scrolled');
+            if (!navTicking) {
+                requestAnimationFrame(function () {
+                    if (window.scrollY > 50) {
+                        header.classList.add('header--scrolled');
+                    } else {
+                        header.classList.remove('header--scrolled');
+                    }
+                    navTicking = false;
+                });
+                navTicking = true;
+            }
+        }, { passive: true });
+    }
+
+    // =========================================
+    // Hero parallax — RAF throttled, desktop only
+    // =========================================
+    var hero = document.querySelector('.hero');
+    var isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+    if (hero && !isMobile) {
+        var heroTicking = false;
+        window.addEventListener('scroll', function () {
+            if (!heroTicking) {
+                requestAnimationFrame(function () {
+                    var offset = Math.min(window.scrollY * 0.12, 48);
+                    hero.style.setProperty('--parallax-y', offset + 'px');
+                    heroTicking = false;
+                });
+                heroTicking = true;
             }
         }, { passive: true });
     }
@@ -125,6 +238,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
         logoItems.forEach(function (el) {
             logoObserver.observe(el);
+        });
+    }
+
+    // =========================================
+    // Project cards — subtle tilt on desktop
+    // =========================================
+    var projectCards = document.querySelectorAll('.project-card');
+
+    if (projectCards.length > 0 && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        projectCards.forEach(function (card) {
+            card.addEventListener('mousemove', function (e) {
+                var rect = card.getBoundingClientRect();
+                var x = ((e.clientX - rect.left) / rect.width) - 0.5;
+                var y = ((e.clientY - rect.top) / rect.height) - 0.5;
+                card.style.setProperty('--card-rotate-x', (-y * 4) + 'deg');
+                card.style.setProperty('--card-rotate-y', (x * 6) + 'deg');
+            });
+
+            card.addEventListener('mouseleave', function () {
+                card.style.setProperty('--card-rotate-x', '0deg');
+                card.style.setProperty('--card-rotate-y', '0deg');
+            });
         });
     }
 
@@ -269,18 +404,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // =========================================
-    // Parallax hero — 0.3 ratio
-    // =========================================
-    var heroBg = document.querySelector('.hero');
-
-    if (heroBg && window.matchMedia('(hover: hover)').matches) {
-        window.addEventListener('scroll', function () {
-            var scrollY = window.pageYOffset;
-            var offset = scrollY * 0.3;
-            heroBg.style.setProperty('--parallax-y', offset + 'px');
-        }, { passive: true });
-    }
+    // Parallax second handler removed — consolidated above
 
     // =========================================
     // Cookie Banner
@@ -312,7 +436,7 @@ document.addEventListener('DOMContentLoaded', function () {
             cookieAcceptAll.addEventListener('click', function () {
                 localStorage.setItem('cookie_consent', 'all');
                 hideCookieBanner();
-                // Load blocked third-party content (e.g. Google Maps)
+                // Load blocked third-party content when explicitly accepted.
                 var mapIframe = document.getElementById('mapIframe');
                 var mapPlaceholder = document.getElementById('mapPlaceholder');
                 if (mapIframe && mapIframe.dataset.src) {
@@ -381,41 +505,58 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     /* ========================================
-       Contact Form (Formspree)
+       Contact Form
        ======================================== */
     var contactForm = document.getElementById('contactForm');
     var contactFormCard = document.getElementById('contactFormCard');
     var contactFormSuccess = document.getElementById('contactFormSuccess');
-    var replyToField = document.getElementById('replyToField');
-    var emailField = document.getElementById('email');
     var submitBtn = document.getElementById('contactSubmitBtn');
+    var contactSectionLine = document.getElementById('contactSectionLine');
+    var contactSectionTitle = document.getElementById('contactSectionTitle');
+    var contactSectionSubtitle = document.getElementById('contactSectionSubtitle');
 
     if (contactForm) {
-        // Sync _replyto with email field
-        emailField.addEventListener('input', function () {
-            replyToField.value = emailField.value;
-        });
-
         contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
 
-            // Sync one last time before submit
-            replyToField.value = emailField.value;
-
             submitBtn.disabled = true;
             submitBtn.textContent = 'Invio in corso...';
-
             var formData = new FormData(contactForm);
+            var payload = {
+                name: (formData.get('name') || '').toString(),
+                email: (formData.get('email') || '').toString(),
+                phone: (formData.get('phone') || '').toString(),
+                service: (formData.get('service') || '').toString(),
+                message: (formData.get('message') || '').toString()
+            };
 
             fetch(contactForm.action, {
                 method: 'POST',
-                body: formData,
-                headers: { 'Accept': 'application/json' }
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
             })
             .then(function (response) {
                 if (response.ok) {
-                    contactFormCard.style.display = 'none';
-                    contactFormSuccess.classList.add('contact-form-success--visible');
+                    if (document.activeElement && typeof document.activeElement.blur === 'function') {
+                        document.activeElement.blur();
+                    }
+
+                    contactForm.reset();
+                    if (contactSectionLine) contactSectionLine.style.display = 'none';
+                    if (contactSectionTitle) contactSectionTitle.style.display = 'none';
+                    if (contactSectionSubtitle) contactSectionSubtitle.style.display = 'none';
+                    contactFormCard.classList.add('contact-form-card--success');
+                    contactFormCard.innerHTML = contactFormSuccess.innerHTML;
+
+                    requestAnimationFrame(function () {
+                        contactFormCard.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                    });
                 } else {
                     submitBtn.disabled = false;
                     submitBtn.textContent = 'Invia messaggio';
