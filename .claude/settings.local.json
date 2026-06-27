@@ -8,7 +8,9 @@
       "Bash(git commit:*)",
       "Bash(git push:*)",
       "Bash(sips:*)",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "Bash(xargs:*)",
+      "WebFetch(domain:www.sibaribonato.com)"
     ]
   }
 }
