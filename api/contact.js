@@ -14,6 +14,7 @@ const ALLOWED_SERVICES = [
   'Logo Design',
   'Siti Web',
   'Fotografia & Contenuti',
+  'Video & Reel',
   'Social & Marketing',
   'Più elementi insieme'
 ];
@@ -199,8 +200,14 @@ module.exports = async function handler(req, res) {
   }
 
   // Blocco richieste non provenienti dal sito
-  const originOk = allowedOrigins.some(o => origin.startsWith(o));
-  const refererOk = referer.includes('sibaribonato.com') || referer.includes('sibari-sito.vercel.app');
+  const originOk = allowedOrigins.includes(origin);
+  let refererOk = false;
+  try {
+    const refererUrl = new URL(referer);
+    refererOk = allowedOrigins.some(value => refererUrl.origin === value);
+  } catch (_) {
+    // Missing or malformed referrers are not trusted as proof of site origin.
+  }
   if (!originOk && !refererOk) {
     return res.status(403).json({ error: 'Forbidden' });
   }
@@ -216,7 +223,15 @@ module.exports = async function handler(req, res) {
     return res.status(429).json({ error: 'Troppe richieste. Riprova tra qualche minuto.' });
   }
 
-  const body = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : (req.body || {});
+  let body;
+  try {
+    body = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : (req.body || {});
+  } catch (_) {
+    return res.status(400).json({ error: 'Richiesta non valida.' });
+  }
+  if (!body || typeof body !== 'object' || Array.isArray(body)) {
+    return res.status(400).json({ error: 'Richiesta non valida.' });
+  }
 
   // Honeypot — se compilato è un bot
   if (body.website || body.company_name) {
@@ -225,11 +240,11 @@ module.exports = async function handler(req, res) {
   }
 
   const clean = {
-    name:    String(body.name    || '').trim().slice(0, 100),
-    email:   String(body.email   || '').trim().toLowerCase().slice(0, 200),
-    phone:   String(body.phone   || '').trim().slice(0, 30),
-    service: String(body.service || '').trim(),
-    message: String(body.message || '').trim().slice(0, 2000)
+    name:    String(body.name    || '').replace(/[\u0000-\u001f\u007f]/g, ' ').trim().slice(0, 100),
+    email:   String(body.email   || '').replace(/[\u0000-\u001f\u007f]/g, '').trim().toLowerCase().slice(0, 200),
+    phone:   String(body.phone   || '').replace(/[\u0000-\u001f\u007f]/g, ' ').trim().slice(0, 30),
+    service: String(body.service || '').replace(/[\u0000-\u001f\u007f]/g, ' ').trim(),
+    message: String(body.message || '').replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g, '').trim().slice(0, 2000)
   };
 
   // Validazione campi obbligatori
